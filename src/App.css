@@ -1,0 +1,145 @@
+.App{
+    padding: 2rem;
+}
+
+section{
+    margin: 5rem;
+}
+
+/*header*/
+
+.header{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    transition: all 2s ease;
+
+
+}
+
+.header__navbar{
+    display: flex;
+    gap: 5rem;
+    border: 1px solid var(--color--secendery);
+    border-radius: 2.5rem;
+    padding: 1.5rem;
+    align-items: center;
+}
+
+.header__search{
+    display: flex;
+    align-items: center;
+}
+
+.header__Location-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.header__input{
+    /*font-size: 1.9rem;*/
+/**/
+}
+
+
+.header__Location-icon{
+    color: var(--color--red);
+
+}
+
+.header__date{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header__date-icon{
+    color: var(--color--primary);
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.DateRange{
+    position: absolute;
+    top: 5rem;
+    right: -3rem;
+}
+
+/*modal-filter*/
+
+
+.header__option{
+    position: relative;
+}
+
+.Modal-filter{
+    position: absolute;
+    top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--color--white);
+    padding: 2rem 1rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 2rem 0 var(--color--secendery);
+}
+
+.modal-filter__item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.2rem;
+
+}
+
+.modal-filter__nums{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.modal-filter__item button{
+    background-color: var(--color--third);
+    padding: 0.4rem 1.1rem;
+    border-radius: 1rem;
+}
+
+.header__search-btn{
+    background-color: var(--color--primary);
+    border-radius: 1rem;
+    padding: 0.8rem 1.3rem;
+
+}
+
+.header__search-icon{
+    color: var(--color--white);
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/*locationList*/
+
+.LocationList{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+    margin-top: 2rem;
+}
+
+.Location__card{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.Location__card img{
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+
