@@ -26,6 +26,8 @@ export default function  useFetch(Url , Query=''){
 
         }
 
+        console.log(Query)
+
         fetchData()
     }, [Url , Query])
 

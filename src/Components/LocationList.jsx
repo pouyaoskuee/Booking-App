@@ -4,8 +4,7 @@ import IsLoading from "./IsLoading.jsx";
 
 const LocationList = () => {
     const {data, isLoading}=useFetch('http://localhost:8000/hotels')
-    console.log(data)
-    console.log(isLoading)
+
     return (
         <section>
             {isLoading ? <IsLoading/>: null}
@@ -27,13 +26,13 @@ function Location__card ({item}) {
     return (
         <div className="Location__card">
             <div className="card__img">
-                <img src={item.picture_url.url} alt={item.name}/>
+                {/*<img src={item.picture_url.url} alt={item.name}/>*/}
+                <img src={'/src/assets/image10.png'} alt={item.name}/>
             </div>
             <div className="card__description">
-                <p>{item.id} </p>
-                <p>{item.smart-location} </p>
-                <p>{item.name}</p>
-                <span>{item.price}</span>
+                <p className={'text-bold'}>{item.smart_location} </p>
+                <p className={'text-transparent'}>{item.name}</p>
+                <span>${item.price} <span className={'text-transparent'}>night</span></span>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import useOutsideClick from "../Hooks/useOutsideClick.js";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -6,17 +6,19 @@ import { DateRange } from "react-date-range";
 import {format} from "date-fns";
 import {MdLocationOn} from 'react-icons/md'
 import {HiCalendar, HiSearch} from "react-icons/hi";
+import {createSearchParams, useNavigate, useSearchParams} from "react-router-dom";
 
 
 const Header = () => {
-    const [destination, setDestination] = useState('')
+    const [searchParams, setSearchParams] = useSearchParams()
+    const [destination, setDestination] = useState(searchParams.get('destination' ));
+    const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [option, setOption] = useState({
         adult: 1,
         children: 0,
         room: 1,
     })
-
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -25,8 +27,6 @@ const Header = () => {
         }
         
     ])
-
-
     const [openDate, setOpenDate] = useState(false)
 
 
@@ -41,7 +41,15 @@ const Header = () => {
     }
 
     const handleSearch = () => {
-        navigate("/hotels")
+        const encodedParams = createSearchParams({
+            destination,
+            option: JSON.stringify(option),
+        })
+
+        navigate({
+            pathname: "/hotels",
+            search: encodedParams.toString(),
+        })
     }
 
 
@@ -51,7 +59,7 @@ const Header = () => {
             <button className={'heder__bookmarks'}>bookmark</button>
             <div className={'header__navbar'}>
                 <div className="header__search">
-                    <MdLocationOn className={'header__Location-icon'} /> <input className={'header__input border-r'} name={'destination'} id={'destination'} placeholder={' where to go?'} onChange={(e) => setDestination(e.target.value)}/>
+                    <MdLocationOn className={'header__Location-icon'} /> <input className={'header__input border-r'} name={'destination'} id={'destination'} placeholder={' where to go?'} onChange={(e) => setDestination(e.target.value)} value={destination}/>
                 </div>
                 <div  className={'header__date border-r'} onClick={() => setOpenDate(!openDate)}>
                     <HiCalendar className={'header__date-icon'}/>
@@ -63,9 +71,9 @@ const Header = () => {
                     {option.adult} adult • {option.children} children • {option.room} room
                     {show && <Modal_filter option={option} handleOption={handleOption} setShow={setShow}/>}
                 </div>
-                <button className={'header__search-btn'}><HiSearch className={'header__search-icon'}/></button>
+                <button onClick={handleSearch} className={'header__search-btn'}><HiSearch className={'header__search-icon'}/></button>
             </div>
-            <button onClick={handleSearch} className={'header__login'}>login</button>
+            <button className={'header__login'}>login</button>
 
         </header>
     );
