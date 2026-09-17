@@ -2,7 +2,6 @@ import {useEffect} from "react";
 
 export default function useOutsideClick(ref , exception , cb) {
     useEffect(() => {
-        console.log(ref);
 
         function handleOutsideClick(e) {
             console.log(e.target)
@@ -14,6 +13,10 @@ export default function useOutsideClick(ref , exception , cb) {
         }
 
         document.addEventListener("click", handleOutsideClick)
+
+        return () => {
+            document.removeEventListener("click", handleOutsideClick)
+        }
 
     }, [ref , cb]);
 }

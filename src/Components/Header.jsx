@@ -11,13 +11,13 @@ import {createSearchParams, useNavigate, useSearchParams} from "react-router-dom
 
 const Header = () => {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [destination, setDestination] = useState(searchParams.get('destination' ));
+    const [destination, setDestination] = useState(searchParams.get('destination' ) || '');
     const navigate = useNavigate();
     const [show, setShow] = useState(false);
     const [option, setOption] = useState({
         adult: 1,
         children: 0,
-        room: 1,
+        room: 0,
     })
     const [date, setDate] = useState([
         {
@@ -61,13 +61,13 @@ const Header = () => {
                 <div className="header__search">
                     <MdLocationOn className={'header__Location-icon'} /> <input className={'header__input border-r'} name={'destination'} id={'destination'} placeholder={' where to go?'} onChange={(e) => setDestination(e.target.value)} value={destination}/>
                 </div>
-                <div  className={'header__date border-r'} onClick={() => setOpenDate(!openDate)}>
+                <div  className={'header__date border-r'} onClick={() => setOpenDate(true)}>
                     <HiCalendar className={'header__date-icon'}/>
                     <p>{`${format(date[0].startDate,'MM/dd/yyyy')} to ${format(date[0].startDate,'MM/dd/yyyy')}`}</p>
                     {openDate && <DateRange onChange={item=> setDate([item.selection])} ranges={date} minDate={new Date()} className={'DateRange'}  />}
                 </div>
 
-                <div onClick={() => setShow(!show)} className={'header__option border-r'}>
+                <div onClick={() => setShow(true)} className={'header__option border-r'}>
                     {option.adult} adult • {option.children} children • {option.room} room
                     {show && <Modal_filter option={option} handleOption={handleOption} setShow={setShow}/>}
                 </div>
@@ -91,7 +91,6 @@ function Modal_filter({option, handleOption , setShow}) {
             <Modal_items type={'adult'} minLimit={1} option={option} handleOption={handleOption}/>
             <Modal_items type={'children'} minLimit={0} option={option} handleOption={handleOption}/>
             <Modal_items type={'room'} minLimit={1} option={option} handleOption={handleOption}/>
-
         </div>
     )
 }

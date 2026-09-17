@@ -2,12 +2,12 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-export default function  useFetch(Url , Query=''){
+export default function  useFetch(Url , Query){
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState([])
-    console.log('render')
+
+    console.log(Query)
     console.log(data)
-    console.log(isLoading)
     
     useEffect(()=>{
         async function fetchData(){
@@ -26,7 +26,6 @@ export default function  useFetch(Url , Query=''){
 
         }
 
-        console.log(Query)
 
         fetchData()
     }, [Url , Query])

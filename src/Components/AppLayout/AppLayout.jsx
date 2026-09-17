@@ -1,15 +1,12 @@
-import React from 'react';
 import {Outlet} from "react-router-dom";
+import Map from "../Map.jsx";
 
 const AppLayout = () => {
     return (
-        <section>
-            <div className="layout">
+            <section className="layout">
                 <div className="layout__sidbar"><Outlet/></div>
-                <div className="layout__map">map</div>
-            </div>
-
-        </section>
+                <div className={'map__sidbar'}><Map/></div>
+            </section>
     );
 };
 

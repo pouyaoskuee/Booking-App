@@ -1,5 +1,8 @@
+@import url("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css");
+
 .App{
     padding: 2rem;
+    width: 100%;
 }
 
 section{
@@ -71,6 +74,7 @@ section{
 
 .header__option{
     position: relative;
+    z-index: 90;
 }
 
 .Modal-filter{
@@ -144,7 +148,14 @@ section{
 
 .layout{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.layout img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 .hotels-list{
@@ -170,6 +181,21 @@ section{
     aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 1rem;
+}
+
+/*map*/
+
+.layout__map > div{
+    height: 100vh;
+}
+
+.map__sidbar{
+    height: 100vh;
+    width: 100%;
+}
+
+.singleHotel{
+    padding-right: 10rem;
 }
 
 

@@ -1,3 +1,4 @@
+@import "leaflet/dist/leaflet.css";
 /*reset*/
 * , :after, :before {
     box-sizing: border-box;
@@ -93,3 +94,4 @@ h3{
     color: var(--color--text);
     font-size: 1.6rem;
 }
+

@@ -1,4 +1,3 @@
-import React from 'react';
 import useFetch from "../Hooks/useFetch.js";
 import IsLoading from "./IsLoading.jsx";
 
